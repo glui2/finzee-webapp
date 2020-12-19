@@ -7,7 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import TransactionRow from "./TransactionRow.js";
-import { TransactionContext } from "../contexts/TransactionContext.js";
+import TransactionContext from "../contexts/TransactionContext.js";
 
 const useStyles = makeStyles({
   table: {
@@ -21,7 +21,7 @@ export default function TransactionTable() {
   return (
     <TransactionContext.Consumer>
       {(context) => {
-        const { transactions } = context;
+        // const { transactions } = context;
 
         return (
           <TableContainer component={Paper}>
@@ -37,7 +37,7 @@ export default function TransactionTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {transactions.map((row) => (
+                {context.transactions.map((row) => (
                   <TransactionRow
                     name={row.name}
                     amount={row.amount}
@@ -46,7 +46,7 @@ export default function TransactionTable() {
                     isTaxClaimable={row.isTaxClaimable}
                     percentage={row.percentage}
                   ></TransactionRow>
-                ))} */}
+                ))}
               </TableBody>
             </Table>
           </TableContainer>

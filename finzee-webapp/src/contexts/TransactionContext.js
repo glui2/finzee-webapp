@@ -1,83 +1,122 @@
-import React, { createContext, Component } from "react";
-import React, { useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
-export const TransactionContext = createContext();
+const TransactionContext = createContext();
 
-class TransactionContextProvider extends Component {
-  constructor(props) {
-    super(props);
+export const TransactionContextProvider = (props) => {
+  var [allTransactions, setAllTransactions] = useState(false);
+  var [transactions, setTransactions] = useState([]);
 
-    this.state = props.initialState
-      ? props.initialState
-      : { showAllTransactions: false, transactions: [] };
-  }
+  //     constructor(props) {
+  //     super(props);
 
-  retrieveTransactions = () => {
+  //     this.state = props.initialState
+  //       ? props.initialState
+  //       : { showAllTransactions: false, transactions: [] };
+  //   }
+
+  useEffect(async () => {
     console.log("get transactions");
-    var allTransactions = [];
-    axios
+    var retrievedTransactions = [];
+    await axios
       .get("https://taxy-298609.ts.r.appspot.com/get_trans_in_date", {
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
       })
       .then((response) => {
-        // console.log(response);
-        allTransactions = response.data.map((obj) => {
+        console.log(response.data);
+        retrievedTransactions = response.data.map((obj) => {
           var tableRow = {};
-          if (!this.state.showAllTransactions || obj.isTaxClaimable) {
+          if (allTransactions || obj.claimFlag) {
             tableRow = {
-              name: obj.name,
-              amount: obj.amount,
+              name: obj.description,
+              amount: obj.amount + " " + obj.currency,
               time: obj.bookingDateTime,
               tags: obj.tags,
               isTaxClaimable: obj.claimFlag,
               percentage: obj.claimPercentage,
             };
           }
-          console.log(tableRow);
+          //   console.log(tableRow);
           return tableRow;
         });
         // console.log(allTransactions);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    console.log(allTransactions);
-    return allTransactions;
-  };
+    console.log(retrievedTransactions);
+    setTransactions(retrievedTransactions);
+  }, [allTransactions]);
 
-  showClaimableTransactions = () => {
+  //   retrieveTransactions = () => {
+  //     console.log("get transactions");
+  //     var allTransactions = [];
+  //     axios
+  //       .get("https://taxy-298609.ts.r.appspot.com/get_trans_in_date", {
+  //         headers: {
+  //           "Access-Control-Allow-Origin": "*",
+  //         },
+  //       })
+  //       .then((response) => {
+  //         // console.log(response);
+  //         allTransactions = response.data.map((obj) => {
+  //           var tableRow = {};
+  //           if (!this.state.showAllTransactions || obj.isTaxClaimable) {
+  //             tableRow = {
+  //               name: obj.name,
+  //               amount: obj.amount,
+  //               time: obj.bookingDateTime,
+  //               tags: obj.tags,
+  //               isTaxClaimable: obj.claimFlag,
+  //               percentage: obj.claimPercentage,
+  //             };
+  //           }
+  //           console.log(tableRow);
+  //           return tableRow;
+  //         });
+  //         // console.log(allTransactions);
+  //       });
+  //     console.log(allTransactions);
+  //     return allTransactions;
+  //   };
+
+  const showClaimableTransactions = () => {
+    setAllTransactions(false);
     // const claimableTransactions = this.retrieveTransactions();
-    this.setState(() => {
-      return {
-        showAllTransactions: false,
-        // transactions: claimableTransactions,
-      };
-    });
+    // this.setState(() => {
+    //   return {
+    //     showAllTransactions: false,
+    //     // transactions: claimableTransactions,
+    //   };
+    // });
   };
 
-  showAllTransactions = () => {
+  const showAllTransactions = () => {
+    setAllTransactions(true);
     // const allTransactions = this.retrieveTransactions();
-    this.setState(() => {
-      return {
-        showAllTransactions: true,
-        // transactions: allTransactions,
-      };
-    });
+    // this.setState(() => {
+    //   return {
+    //     showAllTransactions: true,
+    //     // transactions: allTransactions,
+    //   };
+    // });
   };
 
-  render() {
-    return (
-      <TransactionContext.Provider
-        value={{
-          transactions: this.state.transactions,
-          showClaimableTransactions: this.showClaimableTransactions,
-          showAllTransactions: this.showAllTransactions,
-        }}
-      >
-        {this.props.children}
-      </TransactionContext.Provider>
-    );
-  }
-}
+  //   render() {
+  return (
+    <TransactionContext.Provider
+      value={{
+        transactions: transactions,
+        showClaimableTransactions,
+        showAllTransactions,
+      }}
+    >
+      {props.children}
+    </TransactionContext.Provider>
+  );
+  //   }
+};
 
-export default TransactionContextProvider;
+export default TransactionContext;

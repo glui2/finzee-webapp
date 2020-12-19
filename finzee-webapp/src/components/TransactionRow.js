@@ -14,13 +14,14 @@ const TransactionRow = (props) => {
   return (
     <TableRow key={name}>
       <TableCell component="th" scope="row">
-        <strong>{name}</strong> {time}
+        <strong>{name}</strong>
+        <br /> {time}
       </TableCell>
       <TableCell align="right">{comments}</TableCell>
       <TableCell align="right">{amount}</TableCell>
       <TableCell align="right">{tags}</TableCell>
       <TableCell align="right">{isTaxClaimable ? "yes" : "no"}</TableCell>
-      <TableCell align="right">{percentage}</TableCell>
+      <TableCell align="right">{percentage}%</TableCell>
     </TableRow>
   );
 };

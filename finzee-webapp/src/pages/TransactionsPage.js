@@ -4,7 +4,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import AppBar from "@material-ui/core/AppBar";
 import TransactionsTable from "../components/TransactionsTable.js";
-import { TransactionContext } from "../contexts/TransactionContext.js";
+import TransactionContext from "../contexts/TransactionContext.js";
 import "./TransactionsPage.css";
 
 const TransactionsPage = () => {
@@ -17,7 +17,7 @@ const TransactionsPage = () => {
   return (
     <TransactionContext.Consumer>
       {(context) => {
-        const { showClaimableTransactions, showAllTransactions } = context;
+        // const { showClaimableTransactions, showAllTransactions } = context;
         return (
           <div className="transactions-page">
             <h1>Transactions</h1>
@@ -33,9 +33,9 @@ const TransactionsPage = () => {
               >
                 <Tab
                   label="Tax Claimable Items"
-                  onClick={showClaimableTransactions}
+                  onClick={context.showClaimableTransactions}
                 />
-                <Tab label="All Items" onClick={showAllTransactions} />
+                <Tab label="All Items" onClick={context.showAllTransactions} />
               </Tabs>
             </AppBar>
             <TransactionsTable></TransactionsTable>
