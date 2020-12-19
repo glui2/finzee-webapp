@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { TransactionContextProvider } from "./contexts/TransactionContext.js";
 import { Button } from "@material-ui/core";
 import { TransactionsPage } from "./pages/TransactionsPage.js";
+import { HubPage } from "./pages/HubPage.js";
 import "./App.css";
 import React from "react";
 
@@ -22,28 +23,30 @@ function App() {
             </Grid>
             <Grid item>
               <Button color="primary" href="/hub">
-                Hub
+                Finzee Hub
               </Button>
             </Grid>
             <Grid item>
-              <Button color="primary" href="/resources">
-                Resources
-              </Button>
+              <Button color="primary">Resources</Button>
             </Grid>
             <Grid item>
-              <Button color="primary" href="/help">
-                Help
-              </Button>
+              <Button color="primary">Settings</Button>
+            </Grid>
+            <Grid item>
+              <Button color="primary">Help</Button>
             </Grid>
           </Grid>
         </Drawer>
-        <Switch>
-          <Route exact path="/transactions">
-            <TransactionContextProvider>
+        <TransactionContextProvider>
+          <Switch>
+            <Route exact path="/transactions">
               <TransactionsPage></TransactionsPage>
-            </TransactionContextProvider>
-          </Route>
-        </Switch>
+            </Route>
+            <Route exact path="/hub">
+              <HubPage></HubPage>
+            </Route>
+          </Switch>
+        </TransactionContextProvider>
       </Router>
     </div>
   );
