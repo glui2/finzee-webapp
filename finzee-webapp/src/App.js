@@ -9,6 +9,7 @@ import { TransactionContextProvider } from "./contexts/TransactionContext.js";
 import { Button } from "@material-ui/core";
 import { TransactionsPage } from "./pages/TransactionsPage.js";
 import { HubPage } from "./pages/HubPage.js";
+import FinzeeLogo from "./images/FinzeeLogo.png";
 import "./App.css";
 import React from "react";
 
@@ -69,6 +70,9 @@ function App() {
                 </Grid>
                 <Grid item>
                   <Button color="primary">Help</Button>
+                </Grid>
+                <Grid item justify="flex-end">
+                  <img src={FinzeeLogo}></img>
                 </Grid>
               </Grid>
             </Drawer>
