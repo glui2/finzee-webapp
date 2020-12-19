@@ -15,7 +15,11 @@ class TransactionContextProvider extends Component {
   retrieveTransactions = () => {
     console.log("get transactions");
     axios
-      .get("https://taxy-298609.ts.r.appspot.com/get_trans_in_date")
+      .get("https://taxy-298609.ts.r.appspot.com/get_trans_in_date", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
       .then((response) => {
         console.log(response);
         var allTransactions = response.map((obj) => {
@@ -38,19 +42,21 @@ class TransactionContextProvider extends Component {
   };
 
   showClaimableTransactions = () => {
+    const claimableTransactions = this.retrieveTransactions();
     this.setState(() => {
       return {
         showAllTransactions: false,
-        transactions: this.retrieveTransactions,
+        transactions: claimableTransactions,
       };
     });
   };
 
   showAllTransactions = () => {
+    const allTransactions = this.retrieveTransactions();
     this.setState(() => {
       return {
         showAllTransactions: true,
-        transactions: this.retrieveTransactions,
+        transactions: allTransactions,
       };
     });
   };
