@@ -13,13 +13,15 @@ class TransactionContextProvider extends Component {
   }
 
   retrieveTransactions = () => {
+    console.log("get transactions");
     axios
       .get("https://taxy-298609.ts.r.appspot.com/get_trans_in_date")
       .then((response) => {
         console.log(response);
         var allTransactions = response.map((obj) => {
+          var tableRow = {};
           if (!this.state.showAllTransactions || obj.isTaxClaimable) {
-            return {
+            tableRow = {
               name: obj.name,
               amount: obj.amount,
               time: obj.bookingDateTime,
@@ -28,25 +30,27 @@ class TransactionContextProvider extends Component {
               percentage: obj.claimPercentage,
             };
           }
+          return tableRow;
         });
-        this.setState({ transactions: allTransactions });
+        console.log(allTransactions);
+        return allTransactions;
       });
   };
 
   showClaimableTransactions = () => {
-    this.setState((prevState, props) => {
+    this.setState(() => {
       return {
         showAllTransactions: false,
-        retrieveTransactions: this.retrieveTransactions,
+        transactions: this.retrieveTransactions,
       };
     });
   };
 
   showAllTransactions = () => {
-    this.setState((prevState, props) => {
+    this.setState(() => {
       return {
         showAllTransactions: true,
-        retrieveTransactions: this.retrieveTransactions,
+        transactions: this.retrieveTransactions,
       };
     });
   };
@@ -55,7 +59,7 @@ class TransactionContextProvider extends Component {
     return (
       <TransactionContext.Provider
         value={{
-          ...this.state,
+          transactions: this.state.transactions,
           showClaimableTransactions: this.showClaimableTransactions,
           showAllTransactions: this.showAllTransactions,
         }}

@@ -21,7 +21,7 @@ export default function TransactionTable() {
   return (
     <TransactionContext.Consumer>
       {(context) => {
-        const { showAllTransactions, showClaimableTransactions } = context;
+        const { transactions } = context;
 
         return (
           <TableContainer component={Paper}>
@@ -37,17 +37,16 @@ export default function TransactionTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {transactions.map((row) => (
+                {/* {transactions.map((row) => (
                   <TransactionRow
                     name={row.name}
                     amount={row.amount}
-                    location={row.location}
                     time={row.time}
                     tags={row.tags}
                     isTaxClaimable={row.isTaxClaimable}
                     percentage={row.percentage}
                   ></TransactionRow>
-                ))}
+                ))} */}
               </TableBody>
             </Table>
           </TableContainer>
