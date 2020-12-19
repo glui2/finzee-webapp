@@ -3,6 +3,7 @@ import { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import PersonCard from "../components/PersonCard.js";
+import { makeStyles } from "@material-ui/core/styles";
 
 var dummyData = [
   {
@@ -49,7 +50,16 @@ var dummyData = [
   },
 ];
 
+const useStyles = makeStyles((theme) => ({
+  heading: {
+    verticalAlign: "center",
+    marginTop: "30px",
+  },
+}));
+
 const HubPage = () => {
+  const classes = useStyles();
+
   return (
     // const { showClaimableTransactions, showAllTransactions } = context;
     <div className="transactions-page">
@@ -59,7 +69,7 @@ const HubPage = () => {
             variant="h4"
             align="left"
             color="primary"
-            className="heading"
+            className={classes.heading}
           >
             <strong>Finzee Hub</strong>
           </Typography>

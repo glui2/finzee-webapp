@@ -3,14 +3,23 @@ import { useState } from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import AppBar from "@material-ui/core/AppBar";
+import { makeStyles } from "@material-ui/core/styles";
 import TransactionsTable from "../components/TransactionsTable.js";
 import TransactionContext from "../contexts/TransactionContext.js";
 import Typography from "@material-ui/core/Typography";
 import "./TransactionsPage.css";
 import { Grid } from "@material-ui/core";
 
+const useStyles = makeStyles((theme) => ({
+  heading: {
+    verticalAlign: "center",
+    marginTop: "30px",
+  },
+}));
+
 const TransactionsPage = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const classes = useStyles();
 
   const handleTabChange = (event, newValue) => {
     setSelectedTab(newValue);
@@ -33,7 +42,7 @@ const TransactionsPage = () => {
                   variant="h4"
                   align="left"
                   color="primary"
-                  className="heading"
+                  className={classes.heading}
                 >
                   <strong>Transactions</strong>
                 </Typography>
