@@ -1,4 +1,5 @@
 import React, { createContext, Component } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 export const TransactionContext = createContext();
@@ -14,6 +15,7 @@ class TransactionContextProvider extends Component {
 
   retrieveTransactions = () => {
     console.log("get transactions");
+    var allTransactions = [];
     axios
       .get("https://taxy-298609.ts.r.appspot.com/get_trans_in_date", {
         headers: {
@@ -21,8 +23,8 @@ class TransactionContextProvider extends Component {
         },
       })
       .then((response) => {
-        console.log(response);
-        var allTransactions = response.map((obj) => {
+        // console.log(response);
+        allTransactions = response.data.map((obj) => {
           var tableRow = {};
           if (!this.state.showAllTransactions || obj.isTaxClaimable) {
             tableRow = {
@@ -34,29 +36,31 @@ class TransactionContextProvider extends Component {
               percentage: obj.claimPercentage,
             };
           }
+          console.log(tableRow);
           return tableRow;
         });
-        console.log(allTransactions);
-        return allTransactions;
+        // console.log(allTransactions);
       });
+    console.log(allTransactions);
+    return allTransactions;
   };
 
   showClaimableTransactions = () => {
-    const claimableTransactions = this.retrieveTransactions();
+    // const claimableTransactions = this.retrieveTransactions();
     this.setState(() => {
       return {
         showAllTransactions: false,
-        transactions: claimableTransactions,
+        // transactions: claimableTransactions,
       };
     });
   };
 
   showAllTransactions = () => {
-    const allTransactions = this.retrieveTransactions();
+    // const allTransactions = this.retrieveTransactions();
     this.setState(() => {
       return {
         showAllTransactions: true,
-        transactions: allTransactions,
+        // transactions: allTransactions,
       };
     });
   };

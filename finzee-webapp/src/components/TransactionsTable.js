@@ -28,12 +28,12 @@ export default function TransactionTable() {
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Items</TableCell>
-                  <TableCell align="right">Amount</TableCell>
-                  <TableCell align="right">Location &amp; Time</TableCell>
-                  <TableCell align="right">Tags</TableCell>
-                  <TableCell align="right">Tax-claimable?</TableCell>
-                  <TableCell align="right">Percentage</TableCell>
+                  <TableCell>Transactions</TableCell>
+                  <TableCell align="center">Comments</TableCell>
+                  <TableCell align="center">Amount</TableCell>
+                  <TableCell align="center">Tags</TableCell>
+                  <TableCell align="center">Claimable</TableCell>
+                  <TableCell align="center">Percentage</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
