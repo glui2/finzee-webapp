@@ -17,11 +17,11 @@ const TransactionRow = (props) => {
         <strong>{name}</strong>
         <br /> {time}
       </TableCell>
-      <TableCell align="right">{comments}</TableCell>
-      <TableCell align="right">{amount}</TableCell>
-      <TableCell align="right">{tags}</TableCell>
-      <TableCell align="right">{isTaxClaimable ? "yes" : "no"}</TableCell>
-      <TableCell align="right">{percentage}%</TableCell>
+      <TableCell align="center">{comments}</TableCell>
+      <TableCell align="center">{amount}</TableCell>
+      <TableCell align="center">{tags}</TableCell>
+      <TableCell align="center">{isTaxClaimable ? "yes" : "no"}</TableCell>
+      <TableCell align="center">{percentage}%</TableCell>
     </TableRow>
   );
 };

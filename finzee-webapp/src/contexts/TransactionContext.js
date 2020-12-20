@@ -18,8 +18,9 @@ export const TransactionContextProvider = (props) => {
       })
       .then((response) => {
         retrievedTransactions = response.data.map((obj) => {
-          var tableRow = {};
-          if (allTransactions || obj.claimFlag) {
+          if (allTransactions || obj.claimFlag == true) {
+            var tableRow = {};
+            // console.log(obj);
             tableRow = {
               name: obj.description,
               amount: obj.amount + " " + obj.currency,
@@ -28,17 +29,20 @@ export const TransactionContextProvider = (props) => {
               isTaxClaimable: obj.claimFlag,
               percentage: obj.claimPercentage,
             };
+            return tableRow;
           }
 
-          return tableRow;
+          return;
         });
       })
       .catch((error) => {
         console.log(error);
       });
 
-    // console.log(retrievedTransactions);
-    setTransactions(retrievedTransactions);
+    var filteredTransactions = retrievedTransactions.filter(
+      (object) => object != null
+    );
+    setTransactions(filteredTransactions);
   }, [allTransactions]);
 
   const showClaimableTransactions = () => {

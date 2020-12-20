@@ -45,7 +45,7 @@ function App() {
                 paper: classes.drawerPaper,
               }}
             >
-              <Grid container direction="column" spacing={1}>
+              <Grid container direction="column">
                 <Grid item>
                   <AccountCircleOutlinedIcon
                     color="primary"
@@ -53,7 +53,7 @@ function App() {
                   ></AccountCircleOutlinedIcon>
                 </Grid>
                 <Grid item>
-                  <Button color="primary" href="/transactions">
+                  <Button color="primary" href="/">
                     Transactions
                   </Button>
                 </Grid>
@@ -71,7 +71,7 @@ function App() {
                 <Grid item>
                   <Button color="primary">Help</Button>
                 </Grid>
-                <Grid item justify="flex-end">
+                <Grid item>
                   <img src={FinzeeLogo}></img>
                 </Grid>
               </Grid>
@@ -79,7 +79,7 @@ function App() {
           </Grid>
           <TransactionContextProvider>
             <Switch>
-              <Route exact path="/transactions">
+              <Route exact path="/">
                 <TransactionsPage></TransactionsPage>
               </Route>
               <Route exact path="/hub">
