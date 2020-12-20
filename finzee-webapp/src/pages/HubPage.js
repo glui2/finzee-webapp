@@ -4,6 +4,9 @@ import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import PersonCard from "../components/PersonCard.js";
 import { makeStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import AppBar from "@material-ui/core/AppBar";
 
 var dummyData = [
   {
@@ -59,6 +62,11 @@ const useStyles = makeStyles((theme) => ({
 
 const HubPage = () => {
   const classes = useStyles();
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  const handleTabChange = (event, newValue) => {
+    setSelectedTab(newValue);
+  };
 
   return (
     // const { showClaimableTransactions, showAllTransactions } = context;
@@ -73,6 +81,21 @@ const HubPage = () => {
           >
             <strong>FINZEE Hub</strong>
           </Typography>
+        </Grid>
+        <Grid item>
+          <AppBar position="static" color="default">
+            <Tabs
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+              aria-label="full width tabs example"
+              onChange={handleTabChange}
+              value={selectedTab}
+            >
+              <Tab label="Find new professionals" />
+              <Tab label="My booked consultations" />
+            </Tabs>
+          </AppBar>
         </Grid>
         <Grid container>
           {dummyData.map((obj) => (
