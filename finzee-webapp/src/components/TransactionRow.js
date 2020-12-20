@@ -1,6 +1,8 @@
 import React from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const TransactionRow = (props) => {
   var name = props.name;
@@ -20,7 +22,13 @@ const TransactionRow = (props) => {
       <TableCell align="center">{comments}</TableCell>
       <TableCell align="center">{amount}</TableCell>
       <TableCell align="center">{tags}</TableCell>
-      <TableCell align="center">{isTaxClaimable ? "yes" : "no"}</TableCell>
+      <TableCell align="center">
+        {isTaxClaimable ? (
+          <CheckCircleIcon color="primary" />
+        ) : (
+          <CheckCircleOutlineIcon color="primary" />
+        )}
+      </TableCell>
       <TableCell align="center">{percentage}%</TableCell>
     </TableRow>
   );
