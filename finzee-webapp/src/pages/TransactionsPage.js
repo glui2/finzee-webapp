@@ -34,7 +34,7 @@ const TransactionsPage = () => {
             <Grid
               container
               direction="column"
-              spacing="5"
+              spacing={5}
               justify="space-between"
             >
               <Grid item>
