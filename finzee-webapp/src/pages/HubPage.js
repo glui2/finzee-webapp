@@ -71,7 +71,7 @@ const HubPage = () => {
             color="primary"
             className={classes.heading}
           >
-            <strong>Finzee Hub</strong>
+            <strong>FINZEE Hub</strong>
           </Typography>
         </Grid>
         <Grid container>

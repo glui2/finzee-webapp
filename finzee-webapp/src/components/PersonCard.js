@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
   profilePicture: {
     fontSize: "50px",
   },
+  container: {
+    height: "100%",
+  },
 }));
 
 const PersonCard = (props) => {
@@ -33,7 +36,12 @@ const PersonCard = (props) => {
       m={1}
       p={3}
     >
-      <Grid container direction="column">
+      <Grid
+        container
+        direction="column"
+        justify="space-between"
+        className={classes.container}
+      >
         <Grid item>
           <AccountCircleOutlinedIcon
             color="primary"
@@ -42,25 +50,27 @@ const PersonCard = (props) => {
           ></AccountCircleOutlinedIcon>
         </Grid>
         <Grid item>
-          <Typography color="primary">
+          <Typography variant="body2" color="primary">
             <strong>{name}</strong>
           </Typography>
         </Grid>
         <Grid item>
-          <Typography color="primary">{job}</Typography>
+          <Typography variant="body2" color="primary">
+            {job}
+          </Typography>
         </Grid>
         <Grid item>
-          <Typography>Experience: {experience}</Typography>
+          <Typography variant="body2"> Experience: {experience}</Typography>
         </Grid>
         <Grid item>
-          <Typography>Specialised in: {specialty}</Typography>
+          <Typography variant="body2">Specialised in: {specialty}</Typography>
         </Grid>
         <Grid item>
-          <Typography>{certificate}</Typography>
+          <Typography variant="body2">{certificate}</Typography>
         </Grid>
         <Grid item>
           <Button variant="outlined" color="primary" className={classes.button}>
-            Hire
+            Book
           </Button>
         </Grid>
       </Grid>
