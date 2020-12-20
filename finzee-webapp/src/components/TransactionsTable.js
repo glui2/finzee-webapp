@@ -40,6 +40,7 @@ export default function TransactionTable() {
                 {context.transactions.map((row) => (
                   <TransactionRow
                     name={row.name}
+                    comment={row.comment}
                     amount={row.amount}
                     time={row.time}
                     tags={row.tags}

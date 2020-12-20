@@ -24,6 +24,7 @@ export const TransactionContextProvider = (props) => {
             tableRow = {
               name: obj.description,
               amount: obj.amount + " " + obj.currency,
+              comment: obj.comment,
               time: obj.bookingDateTime,
               tags: obj.tags,
               isTaxClaimable: obj.claimFlag,

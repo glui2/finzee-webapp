@@ -6,7 +6,7 @@ const TransactionRow = (props) => {
   var name = props.name;
   var amount = props.amount;
   var time = props.time;
-  var comments = props.comments;
+  var comments = props.comment;
   var tags = props.tags;
   var isTaxClaimable = props.isTaxClaimable;
   var percentage = props.percentage;
