@@ -4,6 +4,10 @@
   margin: auto;
 }
 
+.heading {
+  margin: 3%;
+}
+
 .form-label {
   text-align: left;
   margin: auto;
@@ -17,7 +21,6 @@
 
 .submit-button {
   border-radius: 10px;
-  margin: 5px;
   min-width: 100px;
   max-width: 130px;
   min-height: 30px;
