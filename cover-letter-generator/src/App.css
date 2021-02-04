@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+.form-label {
+  text-align: left;
+  margin: auto;
+}
+
+.form-input {
+  height: 2em;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.submit-button {
+  border-radius: 10px;
+  margin: 5px;
+  min-width: 100px;
+  max-width: 130px;
+  min-height: 30px;
+  background-color: paleturquoise;
+}
