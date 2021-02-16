@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/finzee-webapp/static/css/main.52580e19.chunk.css",
+    "main.js": "/finzee-webapp/static/js/main.404e1dcb.chunk.js",
+    "main.js.map": "/finzee-webapp/static/js/main.404e1dcb.chunk.js.map",
+    "runtime-main.js": "/finzee-webapp/static/js/runtime-main.ac402c2d.js",
+    "runtime-main.js.map": "/finzee-webapp/static/js/runtime-main.ac402c2d.js.map",
+    "static/js/2.cab8d47d.chunk.js": "/finzee-webapp/static/js/2.cab8d47d.chunk.js",
+    "static/js/2.cab8d47d.chunk.js.map": "/finzee-webapp/static/js/2.cab8d47d.chunk.js.map",
+    "static/js/3.c2145a84.chunk.js": "/finzee-webapp/static/js/3.c2145a84.chunk.js",
+    "static/js/3.c2145a84.chunk.js.map": "/finzee-webapp/static/js/3.c2145a84.chunk.js.map",
+    "index.html": "/finzee-webapp/index.html",
+    "static/css/main.52580e19.chunk.css.map": "/finzee-webapp/static/css/main.52580e19.chunk.css.map",
+    "static/js/2.cab8d47d.chunk.js.LICENSE.txt": "/finzee-webapp/static/js/2.cab8d47d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ac402c2d.js",
+    "static/js/2.cab8d47d.chunk.js",
+    "static/css/main.52580e19.chunk.css",
+    "static/js/main.404e1dcb.chunk.js"
+  ]
+}
